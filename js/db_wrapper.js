@@ -1,5 +1,5 @@
 // url for the JSON file (it's the database now, in real life that would be a server)
-const JSON_URL = '../json/got.json';
+const JSON_URL = './json/got.json';
 
 // downloads the JSON file
 const getRawJSON = async (url = JSON_URL) => {
