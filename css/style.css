@@ -19,7 +19,7 @@ main {
   /* display: flex; */
   background-image: url('../assets/site/mapblue.jpg');
   width: 80%;
-  min-height: 100vh;
+  min-height: 120vh;
   float: left;
 }
 
@@ -27,15 +27,24 @@ aside {
   background-color: #39393a;
   color: white;
   width: 20%;
-  min-height: 100vh;
+  min-height: 120vh;
   float: right;
   text-align: center;
   align-items: center;
   align-self: center;
+  position: relative;
 }
 
 aside h3 {
   padding: 2vh 0;
+}
+
+aside input {
+  position: absolute;
+  font-family: 'FontAwesome';
+  bottom: 5px;
+  left: .5vw;
+  width: 95%;
 }
 
 .character {
@@ -91,6 +100,18 @@ aside h3 {
 .bio {
   padding: 2vh .5vw;
   text-align: justify;
+}
+
+#notFound {
+  position: absolute;
+  font-family: 'FontAwesome';
+  bottom: 50px;
+  left: .5vw;
+  width: 95%;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 @media only screen and (max-width: 1200px) {

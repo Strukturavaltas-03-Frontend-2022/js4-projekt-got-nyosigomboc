@@ -5,6 +5,8 @@ let characters = null;
 let lastSelected = null;
 const mainElement = document.querySelector('main');
 const infoElement = document.querySelector('.info');
+const searchInput = document.querySelector("input[name='search']");
+const notFoundDiv = document.querySelector('#notFound');
 
 const placeHolderHouse = 'assets/houses/placeholder.png';
 
@@ -43,10 +45,15 @@ const showInfo = (index) => {
   infoElement.innerHTML = html;
 };
 
-const selectThis = (element) => {
+const unselectLast = () => {
   if (lastSelected !== null) {
     lastSelected.classList.remove('character__selected');
+    lastSelected = null;
   }
+};
+
+const selectThis = (element) => {
+  unselectLast();
   element.classList.add('character__selected');
   lastSelected = element;
 };
@@ -68,3 +75,43 @@ const generateTable = async () => {
 };
 
 generateTable();
+
+const search = (query) => {
+  const portraitDivs = document.querySelectorAll('.character');
+  let firstMatchedIndex = null;
+  const re = new RegExp(query, 'i');
+  portraitDivs.forEach((element, index) => {
+    if (re.test(characters[index].name)) {
+      if (firstMatchedIndex === null) {
+        firstMatchedIndex = index;
+      }
+      element.classList.remove('hidden');
+    } else {
+      element.classList.add('hidden');
+    }
+  });
+
+  unselectLast();
+  if (firstMatchedIndex !== null) {
+    showInfo(firstMatchedIndex);
+    notFoundDiv.classList.add('hidden');
+  } else {
+    notFoundDiv.classList.remove('hidden');
+  }
+};
+
+const searchDelay = 500;
+let lastTimeout = null;
+
+const addSearch = () => {
+  searchInput.addEventListener('keyup', () => {
+    if (lastTimeout !== null) {
+      clearTimeout(lastTimeout);
+    }
+    lastTimeout = setTimeout(() => {
+      lastTimeout = null;
+      search(searchInput.value);
+    }, searchDelay);
+  });
+};
+addSearch();
