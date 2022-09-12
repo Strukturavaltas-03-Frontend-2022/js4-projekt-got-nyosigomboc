@@ -1,0 +1,116 @@
+
+/* GoT font from here: https://www.fonts4free.net/game-of-thrones-font.html 
+'#' gives a logo-shortcut
+*/
+
+@font-face {
+  font-family: 'GoT';
+  src: url('../fonts/Game of Thrones.ttf');
+}
+
+* {
+  box-sizing: content-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'GoT';
+}
+
+main {
+  /* display: flex; */
+  background-image: url('../assets/site/mapblue.jpg');
+  width: 80%;
+  min-height: 100vh;
+  float: left;
+}
+
+aside {
+  background-color: #39393a;
+  color: white;
+  width: 20%;
+  min-height: 100vh;
+  float: right;
+  text-align: center;
+  align-items: center;
+  align-self: center;
+}
+
+aside h3 {
+  padding: 2vh 0;
+}
+
+.character {
+  display: inline-block;
+  color: #7a6157;
+  align-self: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: text-top;
+  padding: 1vh 1vw;
+  margin: 1vh 1vw;
+  width: 7%;
+}
+
+.character div {
+  padding: 1vh 0;
+  font-size: 0.7em;
+}
+
+.character:hover {
+  background-color: #ffff0033;
+  border-radius: 2em;
+}
+
+.character__selected {
+  color: #322211;
+  font-weight: 600;
+}
+
+.info {
+  font-size: 0.9em;
+}
+
+.info>img {
+  width: 95%;
+}
+
+.name {
+  font-size: 1.3em;
+  font-weight: bolder;
+  margin: 2vh .5vw;
+  position: relative;
+  text-align: left;
+  vertical-align: center;
+}
+
+.name>img {
+  position: absolute;
+  right: 0;
+  top: -50%;
+}
+
+.bio {
+  padding: 2vh .5vw;
+  text-align: justify;
+}
+
+@media only screen and (max-width: 1200px) {
+  .character {
+    width: 18%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .character {
+    width: 40%;
+  }
+
+  main {
+    float: none;
+    width: 100%;
+  }
+
+  aside {
+    float: none;
+    width: 100%;
+  }
+}

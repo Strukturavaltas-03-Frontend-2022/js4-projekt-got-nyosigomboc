@@ -1,0 +1,25 @@
+{
+  "name": "js4-projekt-got-nyosigomboc",
+  "version": "1.0.0",
+  "description": "Feladatodként a Trónok harca karaktereivel, azaz a karakterek adataival kell dolgoznod.   \r Egy JSON-fájl a 3. évad elejéig tartja nyilván az adatokat, szóval nincs spoilerveszély, csak ha eddig kimaradt az életedből a sorozat.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Strukturavaltas-03-Frontend-2022/js4-projekt-got-nyosigomboc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Strukturavaltas-03-Frontend-2022/js4-projekt-got-nyosigomboc/issues"
+  },
+  "homepage": "https://github.com/Strukturavaltas-03-Frontend-2022/js4-projekt-got-nyosigomboc#readme",
+  "devDependencies": {
+    "eslint": "^8.23.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
