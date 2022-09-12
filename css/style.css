@@ -19,7 +19,7 @@ main {
   /* display: flex; */
   background-image: url('../assets/site/mapblue.jpg');
   width: 80%;
-  min-height: 120vh;
+  min-height: 100vh;
   float: left;
 }
 
@@ -27,7 +27,7 @@ aside {
   background-color: #39393a;
   color: white;
   width: 20%;
-  min-height: 120vh;
+  min-height: 100vh;
   float: right;
   text-align: center;
   align-items: center;
@@ -54,13 +54,13 @@ aside input {
   align-items: center;
   text-align: center;
   vertical-align: text-top;
-  padding: 1vh 1vw;
-  margin: 1vh 1vw;
+  padding: 0.5vh 1vw;
+  margin: 0.5vh 1vw;
   width: 7%;
 }
 
 .character div {
-  padding: 1vh 0;
+  padding: 0.5vh 0;
   font-size: 0.7em;
 }
 

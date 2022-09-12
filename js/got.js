@@ -38,6 +38,10 @@ const getPortraitDiv = (name, portrait, index) => `<div class="character" id="ch
 </div>`;
 
 const showInfo = (index) => {
+  if (index === null) {
+    infoElement.innerHTML = '';
+    return;
+  }
   const {
     name, picture, bio, house, portrait,
   } = characters[index];
@@ -62,7 +66,6 @@ const addListeners = () => {
   const divs = document.querySelectorAll('.character');
   divs.forEach((element, index) => element.addEventListener('click', function () {
     showInfo(index);
-    // console.log(this);
     selectThis(this);
   }));
 };
@@ -74,30 +77,40 @@ const generateTable = async () => {
   addListeners();
 };
 
-generateTable();
+const showElement = (element) => {
+  element.classList.remove('hidden');
+};
+
+const hideElement = (element) => {
+  element.classList.add('hidden');
+};
+
+const showOrHide = (element, show = true) => {
+  if (show) {
+    showElement(element);
+  } else {
+    hideElement(element);
+  }
+  return show;
+};
+
+const updateSearchResult = (firstMatchedIndex) => {
+  unselectLast();
+  showInfo(firstMatchedIndex);
+  showOrHide(notFoundDiv, firstMatchedIndex === null);
+};
 
 const search = (query) => {
   const portraitDivs = document.querySelectorAll('.character');
   let firstMatchedIndex = null;
   const re = new RegExp(query, 'i');
   portraitDivs.forEach((element, index) => {
-    if (re.test(characters[index].name)) {
-      if (firstMatchedIndex === null) {
-        firstMatchedIndex = index;
-      }
-      element.classList.remove('hidden');
-    } else {
-      element.classList.add('hidden');
+    if (showOrHide(element, re.test(characters[index].name))
+      && (firstMatchedIndex === null)) {
+      firstMatchedIndex = index;
     }
   });
-
-  unselectLast();
-  if (firstMatchedIndex !== null) {
-    showInfo(firstMatchedIndex);
-    notFoundDiv.classList.add('hidden');
-  } else {
-    notFoundDiv.classList.remove('hidden');
-  }
+  updateSearchResult(firstMatchedIndex);
 };
 
 const searchDelay = 500;
@@ -109,9 +122,12 @@ const addSearch = () => {
       clearTimeout(lastTimeout);
     }
     lastTimeout = setTimeout(() => {
+      clearTimeout(lastTimeout);
       lastTimeout = null;
       search(searchInput.value);
     }, searchDelay);
   });
 };
+
+generateTable();
 addSearch();
